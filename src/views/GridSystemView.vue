@@ -3,9 +3,9 @@
 </script>
 
 <template>
-<div>
-  Grid System
-</div>
+  <div>
+    Grid System
+  </div>
 </template>
 
 <style scoped>
