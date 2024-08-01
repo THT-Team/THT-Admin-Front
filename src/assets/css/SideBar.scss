@@ -12,10 +12,6 @@ aside {
 
   transition: 0.2s ease-in-out;
 
-  .flex {
-    flex: 1 1 0;
-  }
-
   .logo {
     margin-bottom: 1rem;
 
@@ -79,6 +75,7 @@ aside {
         transition: 0.2s ease-in-out;
       }
       .text {
+        height: 24px;
         color: var(--light);
         transition: 0.2s ease-in-out;
       }

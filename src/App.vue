@@ -2,21 +2,26 @@
 
     <div class="app">
         <side-bar />
+
+        <div class="contents-body" style="width: 100%">
+            <nav-bar />
+
+            <div class="view">
+                <router-view />
+            </div>
+
+        </div>
+
+
     </div>
 
-    <div class="main">
-        <router-link to="/">Home</router-link>
-        |
-        <router-link to="/grid-system">About</router-link>
-    </div>
-
-    <router-view />
 
 </template>
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import SideBar from '@/components/SideBar.vue'
+import NavBar from '@/components/NavBar.vue'
 
 </script>
 
