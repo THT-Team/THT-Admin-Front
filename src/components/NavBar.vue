@@ -2,7 +2,6 @@
     <div class="nav">
         <div class="title">
             <h4>{{ title }}</h4>
-            <h5>[ {{ $store.state.pageName }} ]</h5>
         </div>
 
         <div class="flex"></div>
