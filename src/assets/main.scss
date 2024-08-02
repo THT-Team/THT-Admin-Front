@@ -6,7 +6,7 @@
   --dark-alt: #334155;
   --light: #f1f5f9;
   --sidebar-width: 300px;
-  --navbar-height: 100px;
+  --navbar-height: 60px;
 }
 
 * {
@@ -39,4 +39,8 @@ button {
       padding-left: 6rem;
     }
   }
+}
+
+.view {
+  padding: 2rem;
 }

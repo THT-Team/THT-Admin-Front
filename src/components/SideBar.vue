@@ -17,7 +17,7 @@
                 <span class="text">Home</span>
             </router-link>
 
-            <router-link to="/about" class="button" @click="$store.commit('setPageName', '회원 목록')">
+            <router-link to="/users-list" class="button" @click="$store.commit('setPageName', '회원 목록')">
                 <span class="material-icons">description</span>
                 <span class="text">회원 목록</span>
             </router-link>
