@@ -120,7 +120,7 @@ aside {
       }
     }
 
-    h3, .button .text {
+    h3, .button .text, .logo .text {
       opacity: 1;
     }
 
@@ -135,6 +135,10 @@ aside {
     }
   }
 
+  .logo .text {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
   @media (max-width: 1024px) {
     position: absolute;
     z-index: 99;

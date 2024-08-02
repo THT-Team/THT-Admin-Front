@@ -1,7 +1,8 @@
 <template>
     <aside :class="`${is_expanded ? 'is-expanded' : ''}`">
-        <div class="logo">
+        <div class="logo" style="height: 24px">
             <img :src="logoURL" alt="Vue" />
+            <span class="text"> 환영합니다.</span>
         </div>
 
         <div class="menu-toggle-wrap">
