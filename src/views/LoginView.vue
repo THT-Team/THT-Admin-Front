@@ -9,7 +9,7 @@
             <b-form-input v-model="password" placeholder="password" class="mb-3"></b-form-input>
 
             <div class="login-button">
-                <b-button variant="success" @click="$store.dispatch('getAccountInfo')"> 로그인</b-button>
+                <b-button variant="success" @click="$store.dispatch('postLogin',{id,password})"> 로그인</b-button>
             </div>
         </div>
     </div>
