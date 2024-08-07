@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import DashBoardView from '../views/DashBoardView.vue'
 import HomeBaseView from '@/views/HomeBaseView.vue'
 
 const router = createRouter({
@@ -11,14 +10,14 @@ const router = createRouter({
       component: () => import('../views/LoginView.vue')
     },
     {
-      path: '/',
+      path: "/",
       component: HomeBaseView,
       name: 'HomeBase',
       children: [
         {
-          path: '/dash-board',
+          path: '',
           name: 'DashBoard',
-          component: DashBoardView
+          component: () =>import('../views/DashBoardView.vue')
         },
         {
           path: '/users-list',
