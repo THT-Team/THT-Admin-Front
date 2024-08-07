@@ -20,7 +20,5 @@ export async function Login(data) {
       alert(error.response.data.message)
     })
 
-
-  console.log("1" + token.value)
   return token.value
 }

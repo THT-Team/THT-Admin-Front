@@ -49,9 +49,9 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
-import axios from 'axios'
+import { onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
+import { authInstance } from '@/api/index.js'
 
 const fields = [
     { key: 'index', label: '#' },
@@ -62,7 +62,6 @@ const fields = [
 ]
 
 const store = useStore()
-const apiUrl = computed(() => store.getters.getApiUrl)
 
 let content = ref([])
 let page = ref(0)
@@ -93,31 +92,17 @@ function filterData(data) {
 }
 
 async function getUsers(nowPage, search) {
-    const url = `${apiUrl.value}/users?size=10&page=${nowPage}&search=${encodeURIComponent(search)}`
-    const accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhdXRoIiwicm9sZSI6IkFETUlOIiwibmFtZSI6Iuu5oe2YlSIsImlhdCI6MTcyMjU5NzgzMiwiZXhwIjoxNzIyNjI2NjMyfQ.hUQIbCSOrnWLKe8QExcYDML5ftXneIf-HKWdfhOmMPc'
+    const url = `/users?size=10&page=${nowPage}&search=${encodeURIComponent(search)}`
 
-    await axios
-        .get(url, {
-            headers: {
-                Authorization: `Bearer ${accessToken}`
-            }
-        })
+    await authInstance
+        .get(url)
         .then((response) => {
-
                 content.value = response.data.content
                 page.value = response.data.pageable.pageNumber
                 currentPage.value = response.data.pageable.pageNumber + 1
                 rows.value = response.data.totalElements
                 pageSize.value = response.data.pageable.pageSize
                 totalPage.value = response.data.totalPages
-
-                console.log(response.data)
-                console.log(content.value)
-                console.log(page.value)
-                console.log(currentPage.value)
-                console.log(rows.value)
-                console.log(pageSize.value)
-                console.log(totalPage.value)
             }
         )
         .catch((error) => {

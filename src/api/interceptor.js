@@ -11,12 +11,12 @@ export function setInterceptors(instance) {
 function setRequestInterceptor(instance) {
   instance.interceptors.request.use(
     function(config) {
-      config.headers.Authorization = store.state.accessToken
+      config.headers.Authorization = "Bearer " + store.getters.accessToken
       return config
     },
-    function(err) {
-      console.log(err)
-      return err
+    function(error) {
+      console.log(error)
+      return error
     }
   )
 }
@@ -26,9 +26,9 @@ function setResponseInterceptor(instance) {
     function(config) {
       return config
     },
-    function(err) {
-      alert(err)
-      return err
+    function(error) {
+      alert(error.response.data.message)
+      return error
     }
   )
 }

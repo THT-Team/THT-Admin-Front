@@ -5,7 +5,7 @@ import { Login } from '@/api/login.js'
 const store = createStore({
   state() {
     return {
-      accessToken: ''
+      accessToken: null
     }
   },
 
@@ -16,26 +16,26 @@ const store = createStore({
   },
 
   getters: {
-    getApiUrl: state => ''
+    accessToken: state => {
+      if (state.accessToken == null) {
+        state.accessToken = localStorage.getItem('accessToken')
+      }
+
+      if (state.accessToken == null) {
+        alert('로그인을 해주세요')
+        router.push('/login')
+      }
+
+      return state.accessToken
+    }
   },
+
   actions: {
     async postLogin(context, data) {
       await Login(data).then(
         (accessToken) =>
           context.commit('setAccessToken', accessToken)
       )
-    },
-
-    getAccountInfo() {
-      let accessToken = localStorage.getItem('access_token')
-      console.log(accessToken)
-
-      if (accessToken == null) {
-        alert('로그인을 해주세요')
-        router.push('/login')
-      }
-
-      return accessToken
     }
   }
 })
