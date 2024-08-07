@@ -12,13 +12,16 @@ const store = createStore({
   mutations: {
     setAccessToken(state, token) {
       state.accessToken = token
+    },
+    deleteAccessToken(state) {
+      state.accessToken = null
     }
   },
 
   getters: {
     accessToken: state => {
       if (state.accessToken == null) {
-        state.accessToken = localStorage.getItem('accessToken')
+        state.accessToken = localStorage.getItem('token')
       }
 
       if (state.accessToken == null) {
@@ -36,6 +39,14 @@ const store = createStore({
         (accessToken) =>
           context.commit('setAccessToken', accessToken)
       )
+    },
+
+    logout(context){
+      localStorage.removeItem('token')
+      context.commit('deleteAccessToken')
+
+      alert('로그아웃 되었습니다.')
+      router.push('/login')
     }
   }
 })

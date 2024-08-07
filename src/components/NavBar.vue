@@ -7,16 +7,15 @@
         <div class="flex"></div>
 
         <div class="menu">
-            <router-link to="/logout" class="button">
+            <b-button variant="light" size="sm" class="button" @click="$store.dispatch('logout')">
                 <span class="material-icons">logout</span><br>
                 <span class="text">logout</span>
-            </router-link>
+            </b-button>
         </div>
     </div>
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router'
 
 let title = 'Falling'
 
