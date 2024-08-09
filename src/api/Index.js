@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { setInterceptors } from '@/api/interceptor.js'
+import { setInterceptors } from '@/api/Interceptor.js'
 
 let BASE_URL = 'http://localhost:8080'
 
@@ -13,5 +13,5 @@ function createInstanceWithAuth() {
   return setInterceptors(createInstance())
 }
 
-export const simpleInstance = createInstance()
-export const authInstance = createInstanceWithAuth()
+export const getAxiosSimpleInstance = createInstance()
+export const getAxiosAuthInstance = createInstanceWithAuth()

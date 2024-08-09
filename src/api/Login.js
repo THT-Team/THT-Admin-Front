@@ -1,11 +1,11 @@
-import { simpleInstance } from '@/api/index.js'
+import { getAxiosSimpleInstance } from '@/api/Index.js'
 import router from '@/router/index.js'
 import { ref } from 'vue'
 
 export async function Login(data) {
 
   let token = ref('')
-  await simpleInstance
+  await getAxiosSimpleInstance
     .post('login', {
       id: data.id,
       password: data.password

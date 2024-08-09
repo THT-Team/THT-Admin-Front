@@ -1,4 +1,5 @@
 import store from '@/assets/store.js'
+import { HttpStatusCode } from 'axios'
 
 export function setInterceptors(instance) {
 
@@ -15,7 +16,6 @@ function setRequestInterceptor(instance) {
       return config
     },
     function(error) {
-      console.log(error)
       return error
     }
   )
@@ -28,7 +28,16 @@ function setResponseInterceptor(instance) {
     },
     function(error) {
       alert(error.response.data.message)
+      checkUnAuthorizationToken(error.response.status)
       return error
     }
   )
+}
+
+function checkUnAuthorizationToken(statusCode){
+
+  if (statusCode === HttpStatusCode.Unauthorized) {
+    alert("로그인 화면으로 이동합니다.")
+    store.dispatch('logout')
+  }
 }

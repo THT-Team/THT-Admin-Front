@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import router from '@/router/index.js'
-import { Login } from '@/api/login.js'
+import { Login } from '@/api/Login.js'
 
 const store = createStore({
   state() {
@@ -45,7 +45,6 @@ const store = createStore({
       localStorage.removeItem('token')
       context.commit('deleteAccessToken')
 
-      alert('로그아웃 되었습니다.')
       router.push('/login')
     }
   }
