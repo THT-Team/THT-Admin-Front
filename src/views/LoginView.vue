@@ -12,8 +12,6 @@
                 <b-button variant="success" @click="$store.dispatch('postLogin',{id,password})"> 로그인</b-button>
             </div>
         </div>
-
-        <button @click="$store.getters.accessToken()"> 토큰 콘솔 출력</button>
     </div>
 </template>
 

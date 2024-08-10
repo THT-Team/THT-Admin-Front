@@ -3,6 +3,7 @@
 </script>
 
 <template>
+    <b-button> 버튼 </b-button>
     <div>
         DashBord
 
