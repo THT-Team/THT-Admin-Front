@@ -16,7 +16,17 @@
                 <img class="img-fluid img-thumbnail profile-img" :src="content.item.profilePhotoUrl" alt=" ..." />
             </template>
 
+            <template #cell(actions)="row">
+                <b-button size="sm" @click="row.toggleDetails">
+                    {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
+                </b-button>
+            </template>
+
+            <template #row-details="row">
+                <UserDetail :uuid="row.item.userUuid" />
+            </template>
         </b-table>
+
         <div class="w-25 mx-auto">
             <b-input-group size="sm">
                 <b-form-input
@@ -27,7 +37,7 @@
                 ></b-form-input>
 
                 <b-input-group-append>
-                    <b-button  @click="filterData(filter)">검색</b-button>
+                    <b-button @click="filterData(filter)">검색</b-button>
                 </b-input-group-append>
             </b-input-group>
         </div>
@@ -46,19 +56,23 @@
             </div>
         </div>
     </div>
+
+
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
-import { authInstance } from '@/api/index.js'
+import { getAxiosAuthInstance } from '@/api/Index.js'
+import UserDetail from '../components/UserDetail.vue'
 
 const fields = [
     { key: 'index', label: '#' },
     { key: 'profilePhotoUrl', label: '프로필' },
     { key: 'username', label: '이름' },
     { key: 'createdAt', label: '가입 일자' },
-    { key: 'userSate', label: '상태' }
+    { key: 'userSate', label: '상태' },
+    { key: 'actions', label: 'Actions' }
 ]
 
 const store = useStore()
@@ -94,7 +108,7 @@ function filterData(data) {
 async function getUsers(nowPage, search) {
     const url = `/users?size=10&page=${nowPage}&search=${encodeURIComponent(search)}`
 
-    await authInstance
+    await getAxiosAuthInstance
         .get(url)
         .then((response) => {
                 content.value = response.data.content
@@ -106,7 +120,7 @@ async function getUsers(nowPage, search) {
             }
         )
         .catch((error) => {
-            alert(error)
+            console.log(error)
         })
 }
 

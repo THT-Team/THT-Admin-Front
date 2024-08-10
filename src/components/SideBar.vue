@@ -13,22 +13,22 @@
 
         <h3>Menu</h3>
         <div class="menu">
-            <router-link to="/" class="button" >
+            <router-link to="/" class="button">
                 <span class="material-icons">home</span>
                 <span class="text">Home</span>
             </router-link>
 
-            <router-link to="/users-list" class="button" >
-                <span class="material-icons">description</span>
+            <router-link to="/users-list" class="button">
+                <span class="material-icons">group</span>
                 <span class="text">회원 목록</span>
             </router-link>
 
-            <router-link to="/team" class="button" >
-                <span class="material-icons">group</span>
+            <router-link to="/team" class="button">
+                <span class="material-icons">manage_accounts</span>
                 <span class="text">신고 / 차단/ 탈퇴</span>
             </router-link>
 
-            <router-link to="/contact" class="button" >
+            <router-link to="/contact" class="button">
                 <span class="material-icons">email</span>
                 <span class="text">Contact</span>
             </router-link>
