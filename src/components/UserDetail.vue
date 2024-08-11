@@ -4,7 +4,7 @@
             <Carousel autoplay="5000" items-to-show="1" :wrap-around="true">
                 <Slide v-for="(imgUrl, priority) in userDetailData.profileUrl" :key="priority">
                     <div class="carousel__item">
-                        <img :src="imgUrl" alt="프로필 사진"/>
+                        <img :src="imgUrl" alt="프로필 사진" />
                     </div>
                 </Slide>
 
@@ -23,21 +23,30 @@
             <span> <b-badge variant="success">이메일</b-badge> : {{ userDetailData.email }}</span> <br>
             <span> <b-badge variant="success">거주지</b-badge> : {{ userDetailData.userLocation }}</span> <br>
             <span> <b-badge variant="success">키</b-badge> : {{ userDetailData.tall }} cm</span> <br>
-            <span> <b-badge variant="success">성별</b-badge> : {{ userDetailData.gender }}</span> <br>
-            <span> <b-badge variant="success">선호 성별</b-badge> : {{ userDetailData.preferGender }}</span> <br>
-            <span> <b-badge variant="success">음주 여부</b-badge> : {{ userDetailData.drinkStatus }}</span> <br>
-            <span> <b-badge variant="success">흡연 여부</b-badge> : {{ userDetailData.smokingStatus }}</span> <br>
-            <span> <b-badge variant="success">종교</b-badge> : {{ userDetailData.religion }}</span> <br>
+            <span> <b-badge variant="success">성별</b-badge> : {{ convertGender(userDetailData.gender) }}</span> <br>
+            <span> <b-badge variant="success">선호 성별</b-badge> : {{ convertGender(userDetailData.preferGender) }}</span>
+            <br>
+            <span> <b-badge variant="success">음주 여부</b-badge> : {{ convertFrequency(userDetailData.drinkStatus)
+                }}</span> <br>
+            <span> <b-badge variant="success">흡연 여부</b-badge> : {{ convertFrequency(userDetailData.smokingStatus)
+                }}</span> <br>
+            <span> <b-badge variant="success">종교</b-badge> : {{ convertReligion(userDetailData.religion) }}</span> <br>
         </div>
         <div class="detail-info">
             <span> <b-badge variant="success">서비스 이용약관 동의 목록</b-badge> <br>
                 <span v-for="(isAgree, agreeCategory) in userDetailData.serviceAgreeList">
-                    ✔️ {{ agreeCategory }} : {{ isAgree ? " 동의 " : " 비동의 " }} <br>
+                    ✔️ {{ convertServiceAgreeToString(agreeCategory) }} : {{ isAgree ? ' 동의 ' : ' 비동의 ' }} <br>
                 </span>
             </span> <br>
-            <span> <b-badge variant="success">SNS 가입 타입</b-badge> : {{ userDetailData.snsSignUpList }}</span> <br>
-            <span> <b-badge variant="success">관심사</b-badge> : {{ userDetailData.interests }}</span> <br>
-            <span> <b-badge variant="success">이상형</b-badge> : {{ userDetailData.idealTypes }}</span> <br>
+            <span> <b-badge variant="success">SNS 가입 타입</b-badge> :
+                <span v-for="(type, index) in userDetailData.snsSignUpList"> <b-badge pill variant="warning">{{ convertSnsType(type) }}</b-badge> &nbsp</span>
+            </span> <br>
+            <span> <b-badge variant="success">관심사</b-badge> :
+                <span v-for="(interest, index) in userDetailData.interests"> <b-badge pill variant="secondary">{{ interest }}</b-badge> &nbsp</span>
+            </span> <br>
+            <span> <b-badge variant="success">이상형</b-badge> :
+                                <span v-for="(idealType, index) in userDetailData.idealTypes"> <b-badge pill variant="secondary">{{ idealType }}</b-badge> &nbsp</span>
+            </span> <br>
 
         </div>
     </div>
@@ -50,6 +59,12 @@ import { onMounted, ref } from 'vue'
 import { getUserDetail } from '@/api/user/UserDetail.js'
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
+import {
+    convertFrequency,
+    convertGender,
+    convertReligion,
+    convertServiceAgreeToString, convertSnsType
+} from '../api/user/UserDataConverter.js'
 
 const props = defineProps({
     uuid: String
