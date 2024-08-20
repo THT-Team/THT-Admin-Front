@@ -18,12 +18,12 @@
                 <span class="text">Home</span>
             </router-link>
 
-            <router-link to="/users-list" class="button">
+            <router-link to="/users" class="button">
                 <span class="material-icons">group</span>
                 <span class="text">회원 목록</span>
             </router-link>
 
-            <router-link to="/team" class="button">
+            <router-link to="/users/manage-accounts" class="button">
                 <span class="material-icons">manage_accounts</span>
                 <span class="text">신고 / 차단/ 탈퇴</span>
             </router-link>

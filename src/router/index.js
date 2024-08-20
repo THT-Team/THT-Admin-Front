@@ -20,9 +20,14 @@ const router = createRouter({
           component: () =>import('../views/DashBoardView.vue')
         },
         {
-          path: '/users-list',
+          path: '/users',
           name: 'UsersList',
           component: () => import('../views/UsersListView.vue')
+        },
+        {
+          path: '/users/manage-accounts',
+          name: 'UsersManageAccounts',
+          component: () => import('../views/UsersManageAccountView.vue')
         }
       ]
     }

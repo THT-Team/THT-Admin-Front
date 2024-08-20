@@ -1,6 +1,5 @@
 <template>
-
-    <h5>[ 회원 목록 ]</h5>
+    <h6>[ 회원 목록 ]</h6>
     <div style="padding: 0.5rem">
         <span> Total User : {{ rows }} <br> Total Page : {{ totalPage }} </span>
     </div>
